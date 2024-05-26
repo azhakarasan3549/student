@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studentreg</title>
+    <link rel="stylesheet" href="Student.css" />
+  </head>
+  <body>
+    <div id="form">
+      <form action="">
+        <h2>student Registation</h2>
+        <input type="text" placeholder="Name" id="name" />
+        <input type="text" placeholder="Age" id="age" />
+        <input type="email" placeholder="Email" id="email" />
+        <select name="course" id="course">
+          <option value="java" selected disabled>course</option>
+          <option value="java">java</option>
+          <option value="javascript">javascript</option>
+          <option value="HTML">HTML</option>
+          <option value="SQL">SQL</option>
+        </select>
+        <span
+          >Gender &nbsp;M&nbsp;
+          <input
+            type="radio"
+            id="male"
+            class="gender"
+            name="gender"
+            value="Male"
+            checked
+          />
+          &nbsp; F&nbsp;
+          <input
+            type="radio"
+            id="female"
+            class="gender"
+            class="gender"
+            name="gender"
+            value="Female"
+          />
+        </span>
+        <div id="btn">
+          <button id="cancel" type="reset">Cancel</button>
+          <button id="save" type="submit" class="add">Save</button>
+        </div>
+      </form>
+    </div>
+    <table id="cont" style="display: none">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Gender</th>
+        <th>Action</th>
+      </tr>
+      <!-- <tr>
+        <td>azhakarasan</td>
+        <td>20</td>
+        <td>alah
+        </td>
+        <td>java</td>
+        <td>male</td>
+        <td><button class="del" onclick="del(event)">delete</button></td>
+      </tr> -->
+    </table>
+    <script>
+      var save = document.getElementById("save");
+      save.addEventListener("click", function () {
+        event.preventDefault();
+        var cont = document.querySelector("#cont");
+        cont.style.display = "block";
+        var name = document.getElementById("name");
+        var age = document.getElementById("age");
+        var email = document.getElementById("email");
+        var tr = document.createElement("tr");
+        var cour = document.getElementById("course").value;
+        var gen = document.querySelector(".gender:checked");
+        tr.innerHTML = `<td>${name.value}</td>
+        <td>${age.value}</td>
+        <td>${email.value}</td>
+        <td>${cour}</td>
+        <td>${gen.value}</td>
+        <td><button class="del" onclick="del(event)">delete</button></td>`;
+        cont.append(tr);
+      });
+      function del(event) {
+        event.target.parentNode.parentNode.remove();
+      }
+    </script>
+  </body>
+</html>
